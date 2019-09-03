@@ -11,7 +11,7 @@ int mostrarMenu(int operA, int operB, int flagA, int flagB){
     if(flagA == 0){
         printf("1- Ingresar Operando A = x\n");
     }else {
-        printf("1- Operando A = %d \n", operA);}
+        printf("1- Ingresar Operando A = %d \n", operA);}
     if(flagB == 0){
         printf("2- Ingresar Operando B = y\n");
     }else {

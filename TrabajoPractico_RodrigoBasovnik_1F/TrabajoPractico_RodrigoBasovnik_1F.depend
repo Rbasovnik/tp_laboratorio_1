@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1567467543 source:c:\users\home\documents\code\tp_laboratorio_1-master\trabajopractico_rodrigobasovnik_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1567467543 c:\users\home\documents\code\tp_laboratorio_1-master\trabajopractico_rodrigobasovnik_1f\funciones.h
+
