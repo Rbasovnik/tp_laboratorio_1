@@ -1,7 +1,10 @@
-#include <arrayemployees.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "arrayemployees.h"
 #include <string.h>
 #include <ctype.h>
 #include <conio.h>
+#define EMPLEN 10
 
 void customfgets (char cad[], int in){
     int i;
@@ -33,17 +36,16 @@ int showMainManu(){
     return mmOption;
 }
 
-int initEmployee (Employee eList, int eLen){
+void initEmployee (Employee eList[], int eLen){
 
     int i;
 
     for (i = 0; i < eLen; i++){
-        eList[i].isEmpty == 1;
+        eList[i].isEmpty = 1;
     }
-
 }
 
-int showSectorsMenu(Sector sList){
+int showSectorsMenu(Sector sList[]){
     int secMenOption, j;
     for(j = 0; j < 5; j++){
         printf("\nSector Nro %d %s", sList[j].sectorid, sList[j].sectordesc);
@@ -57,7 +59,7 @@ int showSectorsMenu(Sector sList){
     return secMenOption;
 }
 
-int isFreeEmployee(Employee ifList, int ifLen){
+int isFreeEmployee(Employee ifList[], int ifLen){
 
     int isFree = -1 , i;
 
@@ -70,26 +72,26 @@ int isFreeEmployee(Employee ifList, int ifLen){
     return isFree;
 }
 
-int addEmployee (Employee aList, Sector asList, int aLen, int aId){
+int addEmployee (Employee aList[], Sector asList[], int aLen, int aId){
 
     int isEmptyIndex, flagAdd;
 
-    isEmpty = isFreeEmployee(aList, aLen);
+    isEmptyIndex = isFreeEmployee(aList, aLen);
 
     if(isEmptyIndex == -1){
         printf("\nImposible cargar nuevo empleado. Espacio completo");
     }
     else{
 
-        aList[isEmptyIndex].id == aId;
+        aList[isEmptyIndex].id = aId;
 
-        printf("\nIngrese Apellido");
+        printf("\nIngrese Apellido:\n");
         fflush(stdin);
         customfgets(aList[isEmptyIndex].lastName, 51);
-        printf("\nIngrese Nombre");
+        printf("\nIngrese Nombre:\n");
         fflush(stdin);
         customfgets(aList[isEmptyIndex].name, 51);
-        printf("\nIngrese salario");
+        printf("\nIngrese salario:\n");
         fflush(stdin);
         scanf("%f", &aList[isEmptyIndex].salary);
         printf("\nSeleccionar Sector");
@@ -98,13 +100,12 @@ int addEmployee (Employee aList, Sector asList, int aLen, int aId){
 
         aList[isEmptyIndex].isEmpty = 0;
         flagAdd = 1;
-        printf("\nAlta exitosa. Empleado registrado en el legajo Nro %d", aId);
-        system("pause");
+        printf("\nAlta exitosa. Empleado registrado en el legajo Nro %d\n", aId);
     }
     return flagAdd;
 }
 
-int findEmployeeById(Employee fList, int fLen, int fId){
+int findEmployeeById(Employee fList[], int fLen, int fId){
     int k, flagFound = 0;
 
     for(k = 0; k < fLen; k++){
@@ -131,10 +132,10 @@ int showModificationMenu (void){
     return modMenOption;
 }
 
-void modifyEmployee (Employee mList[], Sector msList, int mLen, int indexM){
+void modifyEmployee (Employee mList[], Sector msList[], int mLen, int indexM){
     int modifCont = 0, sectCont, i;
 
-    for(i = 0; i < mLen, i++){
+    for(i = 0; i < mLen; i++){
         if(mList[i].id == indexM){
             indexM = i;
         }
@@ -173,21 +174,23 @@ void modifyEmployee (Employee mList[], Sector msList, int mLen, int indexM){
     }while(modifCont == 0);
 }
 
-int removeEmployee(Employee rList, int rLen, int rId){}
+//int removeEmployee(Employee rLis[]t, int rLen, int rId){}
 
-int sortEmployees(Employee sList, int sLen, int order){}
+//int sortEmployees(Employee sList[], int sLen, int order){}
 
-void printEmployee(Employee pOList, Sector pOsList, int pId){
+void printEmployee(Employee pOList[], Sector pOsList[], int pId){
 
     printf("\n%d\t%s\t%s\t%.2f\t%d\t%s", pOList[pId].id, pOList[pId].lastName, pOList[pId].name, pOList[pId].salary, pOList[pId].sector, pOsList[pOList[pId].sector-1].sectordesc);
 
 }
 
-void printEmployees(Employee pAList, Sector pAsList, int pLen){
+/*void printEmployees(Employee pAList[], Sector pAsList[], int pLen){
     int l;
 
     for(l = 0; l < pLen; l++){
-        printEmployee(pAList[l], pAsList);
+        printEmployee(pAList[l], pAsList[pAList[l].sector - 1], EMPLEN);
     }
 
 }
+
+*/
