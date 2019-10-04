@@ -50,12 +50,72 @@ int showSectorsMenu(Sector sList){
     }
     printf("\nIngrese sector: ");
     scanf("%d", &secMenOption);
+    while(secMenOption < 1 || secMenOption > 5){
+        printf("\nSector incorrecto. Reingrese sector");
+        scanf("%d", &secMenOption);
+    }
     return secMenOption;
 }
 
-int addEmployee (Employee aList, int aLen, int aId, char name[]){}
+int isFreeEmployee(Employee ifList, int ifLen){
 
-int findEmployeeById(Employee fList, int fLen, int fId){}
+    int isFree = -1 , i;
+
+        for(i = 0; i < ifLen; i++){
+            if(ifList[i].isEmpty == 1){
+                isFree = i;
+                break;
+            }
+        }
+    return isFree;
+}
+
+int addEmployee (Employee aList, Sector asList, int aLen, int aId){
+
+    int isEmptyIndex, flagAdd;
+
+    isEmpty = isFreeEmployee(aList, aLen);
+
+    if(isEmptyIndex == -1){
+        printf("\nImposible cargar nuevo empleado. Espacio completo");
+    }
+    else{
+
+        aList[isEmptyIndex].id == aId;
+
+        printf("\nIngrese Apellido");
+        fflush(stdin);
+        customfgets(aList[isEmptyIndex].lastName, 51);
+        printf("\nIngrese Nombre");
+        fflush(stdin);
+        customfgets(aList[isEmptyIndex].name, 51);
+        printf("\nIngrese salario");
+        fflush(stdin);
+        scanf("%f", &aList[isEmptyIndex].salary);
+        printf("\nSeleccionar Sector");
+        fflush(stdin);
+        aList[isEmptyIndex].sector = showSectorsMenu(asList);
+
+        aList[isEmptyIndex].isEmpty = 0;
+        flagAdd = 1;
+        printf("\nAlta exitosa. Empleado registrado en el legajo Nro %d", aId);
+        system("pause");
+    }
+    return flagAdd;
+}
+
+int findEmployeeById(Employee fList, int fLen, int fId){
+    int k, flagFound = 0;
+
+    for(k = 0; k < fLen; k++){
+        if(fList[k].id ==  fId){
+            flagFound = 1;
+            break;
+        }
+    }
+
+    return flagFound;
+}
 
 int showModificationMenu (void){
     int modMenOption;
@@ -71,8 +131,15 @@ int showModificationMenu (void){
     return modMenOption;
 }
 
-void modifyEmployee (Employee mList[], Sector msList, int indexM){
-    int modifCont = 0, sectCont;
+void modifyEmployee (Employee mList[], Sector msList, int mLen, int indexM){
+    int modifCont = 0, sectCont, i;
+
+    for(i = 0; i < mLen, i++){
+        if(mList[i].id == indexM){
+            indexM = i;
+        }
+    }
+
     do{
         switch(showModificationMenu()){
         case 1:
@@ -92,32 +159,8 @@ void modifyEmployee (Employee mList[], Sector msList, int indexM){
             break;
         case 4:
             fflush(stdin);
-            do{
-                switch(showSectorsMenu(msList)){
-                case 1:
-                    mList[indexM].sector == 1;
-                    sectCont = 1;
-                    break;
-                case 2:
-                    mList[indexM].sector == 2;
-                    sectCont = 1;
-                    break;
-                case 3:
-                    mList[indexM].sector == 3;
-                    sectCont = 1;
-                    break;
-                case 4:
-                    mList[indexM].sector == 4;
-                    sectCont = 1;
-                    break;
-                case 5:
-                    mList[indexM].sector == 5;
-                    sectCont = 1;
-                    break;
-                default:
-                    printf("\nSector Incorrecto. Reingrese el sector");
-                    break;
-                }while(sectCont = 0);
+            sectCont = showSectorsMenu(msList);
+            mList[indexM].sector = sectCont;
             break;
         case 5:
             printf("\nOpcion Salir\n");
@@ -134,4 +177,17 @@ int removeEmployee(Employee rList, int rLen, int rId){}
 
 int sortEmployees(Employee sList, int sLen, int order){}
 
-int printEmployees(Employee pList, int pLen){}
+void printEmployee(Employee pOList, Sector pOsList, int pId){
+
+    printf("\n%d\t%s\t%s\t%.2f\t%d\t%s", pOList[pId].id, pOList[pId].lastName, pOList[pId].name, pOList[pId].salary, pOList[pId].sector, pOsList[pOList[pId].sector-1].sectordesc);
+
+}
+
+void printEmployees(Employee pAList, Sector pAsList, int pLen){
+    int l;
+
+    for(l = 0; l < pLen; l++){
+        printEmployee(pAList[l], pAsList);
+    }
+
+}

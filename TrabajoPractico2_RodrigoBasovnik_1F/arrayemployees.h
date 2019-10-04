@@ -21,14 +21,20 @@ int initEmployee (Employee eList, int eLen);
 
 int showSectorsMenu(Sector sList);
 
-int addEmployee (Employee aList, int aLen, int aId, char name[])
+int isFreeEmployee(Employee ifList, int ifLen);
+
+int addEmployee (Employee aList, Sector asList, int aLen, int aId);
 
 int findEmployeeById(Employee fList, int fLen, int fId);
 
 int showModificationMenu (void);
 
+void modifyEmployee (Employee mList[], Sector msList, int mLen, int indexM);
+
 int removeEmployee(Employee rList, int rLen, int rId);
 
 int sortEmployees(Employee sList, int sLen, int order);
 
-int printEmployees(Employee pList, int pLen);
+void printEmployee(Employee pOList, Sector pOsList, int pId);
+
+void printEmployees(Employee pAList, Sector pAsList, int pLen);
