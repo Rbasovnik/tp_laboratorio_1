@@ -17,3 +17,21 @@
 	<ctype.h>
 	<conio.h>
 
+1570237997 source:c:\users\home\documents\code\tp_laboratorio_1-master\trabajopractico2_rodrigobasovnik_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arrayemployees.h"
+	<string.h>
+	<ctype.h>
+	<conio.h>
+
+1570236937 c:\users\home\documents\code\tp_laboratorio_1-master\trabajopractico2_rodrigobasovnik_1f\arrayemployees.h
+
+1570237777 source:c:\users\home\documents\code\tp_laboratorio_1-master\trabajopractico2_rodrigobasovnik_1f\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	"arrayemployees.h"
+	<string.h>
+	<ctype.h>
+	<conio.h>
+

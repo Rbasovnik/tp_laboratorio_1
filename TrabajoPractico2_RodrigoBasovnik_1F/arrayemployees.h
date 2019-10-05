@@ -29,12 +29,12 @@ int findEmployeeById(Employee fList[], int fLen, int fId);
 
 int showModificationMenu (void);
 
-void modifyEmployee (Employee mList[], Sector msList[], int mLen, int indexM);
+void modifyEmployee (Employee mList[], Sector msList[], int mLen);
 
-int removeEmployee(Employee rList[], int rLen, int rId);
+void removeEmployee(Employee rList[], int rLen);
 
 int sortEmployees(Employee sList[], int sLen, int order);
 
-void printEmployee(Employee pOList[], Sector pOsList[], int pId);
+void printEmployee(Employee pOList);
 
-void printEmployees(Employee pAList[], Sector pAsList[], int pLen);
+void printEmployees(Employee pAList[], int pLen);

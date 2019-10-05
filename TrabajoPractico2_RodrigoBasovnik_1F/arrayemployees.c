@@ -109,9 +109,12 @@ int findEmployeeById(Employee fList[], int fLen, int fId){
     int k, flagFound = 0;
 
     for(k = 0; k < fLen; k++){
-        if(fList[k].id ==  fId){
+        if(fList[k].id ==  fId && fList[k].isEmpty == 0){
             flagFound = 1;
             break;
+        }
+        else{
+            flagFound = 0;
         }
     }
 
@@ -132,65 +135,114 @@ int showModificationMenu (void){
     return modMenOption;
 }
 
-void modifyEmployee (Employee mList[], Sector msList[], int mLen, int indexM){
-    int modifCont = 0, sectCont, i;
+void modifyEmployee (Employee mList[], Sector msList[], int mLen){
+    int modifCont = 0, sectCont, i, modificarLegajo;
+    char  confirmModif;
 
-    for(i = 0; i < mLen; i++){
-        if(mList[i].id == indexM){
-            indexM = i;
+    printf("\nIngrese el legajo del empleado que desea modificar\n");
+    scanf("%d", &modificarLegajo);
+        if(findEmployeeById(mList, EMPLEN, modificarLegajo) == 1){
+            printf("\nSe encontro el legajo: \n");
+            printEmployee(mList[modificarLegajo]);
+            printf("\nDesea modificarlo? S / N\n");
+            fflush(stdin);
+            confirmModif = getche();
+            confirmModif = tolower(confirmModif);
+            if (confirmModif == 's'){
+                for(i = 0; i < mLen; i++){
+                    if(mList[i].id == modificarLegajo){
+                        modificarLegajo = i;
+                    }
+                }
+                do{
+                    switch(showModificationMenu()){
+                    case 1:
+                        fflush(stdin);
+                        printf("\nIngrese el nombre: ");
+                        customfgets(mList[modificarLegajo].name, 51);
+                        break;
+                    case 2:
+                        fflush(stdin);
+                        printf("\nIngresar Apellido: ");
+                        customfgets(mList[modificarLegajo].lastName, 51);
+                        break;
+                    case 3:
+                        fflush(stdin);
+                        printf("\nIngresar Salario: ");
+                        scanf("%f", &mList[modificarLegajo].salary);
+                        break;
+                    case 4:
+                        fflush(stdin);
+                        sectCont = showSectorsMenu(msList);
+                        mList[modificarLegajo].sector = sectCont;
+                        break;
+                    case 5:
+                        printf("\nOpcion Salir\n");
+                        modifCont = 1;
+                        break;
+                    default:
+                        printf("\nOpcion incorrecta\n");
+                        break;
+                    }
+                }while(modifCont == 0);
+            }
+            else{
+                printf("\nLegajo no encontrado en el sistema\n");
+            }
         }
-    }
-
-    do{
-        switch(showModificationMenu()){
-        case 1:
-            fflush(stdin);
-            printf("\nIngrese el nombre: ");
-            customfgets(mList[indexM].name, 51);
-            break;
-        case 2:
-            fflush(stdin);
-            printf("\nIngresar Apellido: ");
-            customfgets(mList[indexM].lastName, 51);
-            break;
-        case 3:
-            fflush(stdin);
-            printf("\nIngresar Salario: ");
-            scanf("%f", &mList[indexM].salary);
-            break;
-        case 4:
-            fflush(stdin);
-            sectCont = showSectorsMenu(msList);
-            mList[indexM].sector = sectCont;
-            break;
-        case 5:
-            printf("\nOpcion Salir\n");
-            modifCont = 1;
-            break;
-        default:
-            printf("\nOpcion incorrecta\n");
-            break;
-        }
-    }while(modifCont == 0);
 }
 
-//int removeEmployee(Employee rLis[]t, int rLen, int rId){}
+void removeEmployee(Employee rList[], int rLen){
+    int i, flagRemoval = 0, bajaLegajo;
+    char confirmBaja;
+
+    printf("\nIngrese el legajo del empleado que desea dar de baja: ");
+    scanf("%d", &bajaLegajo);
+        if(findEmployeeById(rList, EMPLEN, bajaLegajo) == 1){
+            printf("\nSe encontro el legajo: ");
+            printEmployee(rList[bajaLegajo]);
+            printf("\nDesea continuar con la baja? S / N\n");
+            fflush(stdin);
+            confirmBaja = getche();
+            confirmBaja = tolower(confirmBaja);
+            if (confirmBaja == 's'){
+                for(i = 0; i < rLen; i++){
+                    if(rList[i].id == bajaLegajo){
+                        bajaLegajo = i;
+                    }
+                }
+                rList[bajaLegajo].isEmpty = 1;
+                flagRemoval = 1;
+            }
+        }
+        else{
+            printf("\nLegajo no encontrado en el sistema\n");
+        }
+        if(flagRemoval == 1){
+            printf("\nBaja dada con exito!\n");
+        }
+
+}
 
 //int sortEmployees(Employee sList[], int sLen, int order){}
 
-void printEmployee(Employee pOList[], Sector pOsList[], int pId){
+void printEmployee(Employee pOList){
 
-    printf("\n%d\t%s\t%s\t%.2f\t%d\t%s", pOList[pId].id, pOList[pId].lastName, pOList[pId].name, pOList[pId].salary, pOList[pId].sector, pOsList[pOList[pId].sector-1].sectordesc);
+    printf("\n%d\t%s\t%s\t%.2f\t%d\n", pOList.id, pOList.lastName, pOList.name, pOList.salary, pOList.sector);
 
 }
 
-/*void printEmployees(Employee pAList[], Sector pAsList[], int pLen){
-    int l;
+void printEmployees(Employee pAList[], int pLen){
+    int i, contador = 0;
 
-    for(l = 0; l < pLen; l++){
-        printEmployee(pAList[l], pAsList[pAList[l].sector - 1], EMPLEN);
+    for(i = 0; i < pLen; i++){
+        if(pAList[i].isEmpty == 0){
+            printEmployee(pAList[i]);
+            contador++;
+        }
     }
 
+    if(contador == 0){
+        printf("\nNo hay empleados por mostrar");
+    }
 }
-
-*/
