@@ -48,9 +48,12 @@ int employee_setId(Employee* this,int id){
 }
 
 int employee_getId(Employee* this,int* id){
+    int resul = 0;
     if(this != NULL && id > 0){
         *id = this-> id;
+        resul = 1;
     }
+    return resul;
 }
 
 int employee_setNombre(Employee* this,char* nombre){
@@ -61,7 +64,14 @@ int employee_setNombre(Employee* this,char* nombre){
         }
     return result;
 }
-int employee_getNombre(Employee* this,char* nombre);
+int employee_getNombre(Employee* this,char* nombre){
+    int resultado = 0;
+        if(this != NULL && nombre != '\0'){
+            strcpy(nombre, this->nombre);
+            resultado = 1;
+        }
+    return resul;
+}
 
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas){
     int result = 0;
