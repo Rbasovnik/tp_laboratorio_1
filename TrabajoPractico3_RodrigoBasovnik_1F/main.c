@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <conio.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
@@ -21,13 +24,11 @@
 
 int main()
 {
-    int option = 0;
+    char salir = 'n';
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
-        system("cls");
-        printMenu();
-        scanf("%d", option);
-        switch(option)
+        fflush(stdin);
+        switch(printMenu())
         {
             case 1:
                 printf("Opcion cargar los datos de los empleados desde el archivo data.csv (modo texto)\n");
@@ -35,44 +36,47 @@ int main()
                 break;
             case 2:
                 printf("Opcion cargar los datos de los empleados desde el archivo data.csv (modo Binario)\n");
-
+                //controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee);
                 break;
             case 3:
                 printf("Opcion Alta Empleado.\n");
-
+                //controller_addEmployee(LinkedList* pArrayListEmployee);
                 break;
             case 4:
                 printf("Opcion Modificar Empleado.\n");
-
+                //controller_editEmployee(LinkedList* pArrayListEmployee);
                 break;
             case 5:
                 printf("Opcion Baja Empleado.\n");
-
+                //controller_removeEmployee(LinkedList* pArrayListEmployee);
                 break;
             case 6:
                 printf("Opcion Listar Empleados.\n");
-
+                //controller_ListEmployee(LinkedList* pArrayListEmployee);
                 break;
             case 7:
                 printf("Opcion Ordenar Empleados.\n");
-
+                //controller_sortEmployee(LinkedList* pArrayListEmployee);
                 break;
             case 8:
                 printf("Opcion Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-
+                //controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
                 break;
             case 9:
                 printf("Opcion Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
-
+                //controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
                 break;
             case 10:
-                printf("Opcion Salir\n");
-
+                printf("Opcion Salir.\n");
+                printf("Desea salir del programa? ( S / N )\n");
+                salir = tolower(getche());
+                printf("\n");
                 break;
             default:
-                printf("Opcion Incorrecta");
+                printf("Opcion Incorrecta\n");
                 break;
         }
-    }while(option != 10);
+        system("pause");
+    }while(salir != 's');
     return 0;
 }

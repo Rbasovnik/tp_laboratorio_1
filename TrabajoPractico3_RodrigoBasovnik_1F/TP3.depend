@@ -77,3 +77,46 @@
 	<conio.h>
 	"Employee.h"
 
+1573010802 source:c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1533133022 c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\linkedlist.h
+
+1573167348 c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\employee.h
+
+1573010802 source:c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1573167629 source:c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1533133022 c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\controller.h
+
+1573167670 source:c:\users\home\documents\code\trabajopractico3_rodrigobasovnik_1f\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+

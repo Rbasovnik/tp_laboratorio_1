@@ -38,9 +38,8 @@ void employee_delete();
 
 int employee_setId(Employee* this,int id){
     int resultado = 0;
-
         if(this != NULL && id > 0){
-            this->id;
+            this->id = id;
             resultado = 1;
         }
 
@@ -59,7 +58,7 @@ int employee_getId(Employee* this,int* id){
 int employee_setNombre(Employee* this,char* nombre){
     int result = 0;
         if(this != NULL && nombre != '\0'){
-        this->nombre;
+        strcpy(this->nombre, nombre);
         result = 1;
         }
     return result;
@@ -70,30 +69,46 @@ int employee_getNombre(Employee* this,char* nombre){
             strcpy(nombre, this->nombre);
             resultado = 1;
         }
-    return resul;
+    return resultado;
 }
 
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas){
     int result = 0;
         if(this != NULL && horasTrabajadas > 0){
-        this->horasTrabajadas;
+        this->horasTrabajadas = horasTrabajadas;
         result = 1;
         }
     return result;
 }
-int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas){
+   int resul = 0;
+    if(this != NULL && horasTrabajadas > 0){
+        *horasTrabajadas = this->horasTrabajadas;
+        resul = 1;
+    }
+    return resul;
+}
 
 int employee_setSueldo(Employee* this,int sueldo){
     int res = 0;
         if(this != NULL && sueldo > 999){
-            this->sueldo;
+            this->sueldo = sueldo;
             res = 1;
         }
     return res;
 }
-int employee_getSueldo(Employee* this,int* sueldo);
+int employee_getSueldo(Employee* this,int* sueldo){
+    int resul = 0;
+    if(this != NULL && *sueldo > 999){
+        *sueldo = this->sueldo;
+        resul = 1;
+    }
+    return resul;
+}
 
-void printMenu(){
+int printMenu(){
+    int option;
+    system("cls");
     printf("********Menu de opciones********\n");
     printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
     printf("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).\n");
@@ -106,4 +121,7 @@ void printMenu(){
     printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
     printf("10. Salir.\n");
     printf("Ingrese la opcion deseada\n");
+    fflush(stdin);
+    scanf("%d", &option);
+    return option;
 }
