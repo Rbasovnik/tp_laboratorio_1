@@ -1,3 +1,8 @@
+/*****************
+ * Trabajo Practico Nº2 Laboratorio 1 Comision 1F
+ * Rodrigo Javier Basovnik
+ *****************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "arrayemployees.h"
@@ -5,6 +10,8 @@
 #include <ctype.h>
 #include <conio.h>
 #define EMPLEN 10
+#define UP 1
+#define DOWN 0
 
 int main(){
 
@@ -71,6 +78,7 @@ int main(){
                 do{
                     switch(opcionInform){
                     case 1:
+                        sortEmployees(empleado, EMPLEN, UP);
                         printf("Legajo\tApellido\tNombre\tSalario\tSector\n");
                         printEmployees(empleado, EMPLEN);
                         salirInform = 1;
