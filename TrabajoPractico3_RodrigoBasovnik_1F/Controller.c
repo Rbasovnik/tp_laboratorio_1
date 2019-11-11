@@ -16,8 +16,26 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
+    FILE* pFile;
+    int response = 0;
 
-    return 1;
+    if(path != NULL && pArrayListEmployee != NULL){
+        pFile = fopen(path,"r");
+        if(pFile!=NULL){
+            parser_EmployeeFromText(pFile,pArrayListEmployee);
+            fclose(pFile);
+            response = 1;
+        }else{
+            response = 1;
+        }
+    }
+
+    if(response == 1){
+        margen(); printf("Datos cargados con exito");
+    } else {
+        margen(); printf("Ups!, ocurrio un error al cargar los datos");
+    }
+    return response;
 }
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
@@ -29,7 +47,26 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* pFile;
+    int response = 0;
+
+    if(path != NULL && pArrayListEmployee != NULL){
+        pFile = fopen(path,"rb");
+        if(pFile!=NULL){
+            parser_EmployeeFromBinary(pFile,pArrayListEmployee);
+            fclose(pFile);
+            response = 1;
+        }else{
+            response = 1;
+        }
+    }
+
+    if(response == 1){
+        margen(); printf("Datos cargados con exito");
+    } else {
+        margen(); printf("Ups!, ocurrio un error al savar los datos");
+    }
+    return response;
 }
 
 /** \brief Alta de empleados
