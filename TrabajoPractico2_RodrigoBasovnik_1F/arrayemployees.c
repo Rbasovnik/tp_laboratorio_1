@@ -5,6 +5,8 @@
 #include <ctype.h>
 #include <conio.h>
 #define EMPLEN 10
+#define DOWN 0
+#define UP 1
 
 void customfgets (char cad[], int in){
     int i;
@@ -209,10 +211,11 @@ void removeEmployee(Employee rList[], int rLen){
                 for(i = 0; i < rLen; i++){
                     if(rList[i].id == bajaLegajo){
                         bajaLegajo = i;
+                        rList[bajaLegajo].isEmpty = 1;
+                        flagRemoval = 1;
+                        break;
                     }
                 }
-                rList[bajaLegajo].isEmpty = 1;
-                flagRemoval = 1;
             }
         }
         else{
@@ -224,7 +227,46 @@ void removeEmployee(Employee rList[], int rLen){
 
 }
 
-//int sortEmployees(Employee sList[], int sLen, int order){}
+void swapEmployees(Employee swlist[], int i, int j){
+    Employee aux;
+    aux = swlist[i];
+    swlist[i] = swlist[j];
+    swlist[j] = aux;
+}
+
+int sortEmployees(Employee sList[], int sLen, int order){
+    int i,j;
+    int response = -1;
+    if(order >= DOWN || order <= UP){
+        response = 0;
+            for(i = 0; i < sLen - 1; i++){
+                for(j = i + 1; j < sLen; j++){
+                    if(order == DOWN){// DESC
+                        if(sList[i].sector > sList[j].sector){
+                            swapEmployees(sList,i,j);
+                        } else {
+                            if( (sList[i].sector == sList[j].sector) && (strcmp(sList[i].lastName, sList[j].lastName) > 0) ){
+                                swapEmployees(sList,i,j);
+                            }
+                        }
+
+                    } else if(order == UP){// ASC
+                        if(sList[i].sector < sList[j].sector){
+                            swapEmployees(sList,i,j);
+                        } else {
+                            if( (sList[i].sector == sList[j].sector) && (strcmp(sList[i].lastName, sList[j].lastName) < 0) ){
+                                swapEmployees(sList,i,j);
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            printf("Error, funcion sortEmployees: order debe ser 0 o 1 \n");
+        }
+return response;
+}
+
 
 void printEmployee(Employee pOList){
 
@@ -243,6 +285,6 @@ void printEmployees(Employee pAList[], int pLen){
     }
 
     if(contador == 0){
-        printf("\nNo hay empleados por mostrar");
+        printf("\nNo hay empleados por mostrar\n");
     }
 }

@@ -35,3 +35,21 @@
 	<ctype.h>
 	<conio.h>
 
+1573511716 source:d:\tp_laboratorio_1-master\trabajopractico2_rodrigobasovnik_1f\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	"arrayemployees.h"
+	<string.h>
+	<ctype.h>
+	<conio.h>
+
+1573512405 d:\tp_laboratorio_1-master\trabajopractico2_rodrigobasovnik_1f\arrayemployees.h
+
+1573186090 source:d:\tp_laboratorio_1-master\trabajopractico2_rodrigobasovnik_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arrayemployees.h"
+	<string.h>
+	<ctype.h>
+	<conio.h>
+
