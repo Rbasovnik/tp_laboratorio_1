@@ -24,6 +24,15 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas);
 int employee_setSueldo(Employee* this,int sueldo);
 int employee_getSueldo(Employee* this,int* sueldo);
 
-int printMenu();
+int employee_printMenu();
+void employee_printEmployee(Employee* this);
+void employee_printEmployees(LinkedList* lList);
+
+int employee_sortById( void* employee, void* auxEmployee);
+int employee_sortBySalary( void* employee, void* auxEmployee);
+
+int employee_addValidId(int id, int maxRange, int minRange);
+void employee_addValidName(char name, int len);
+int employee_addValidInt(int input, int minRange);
 
 #endif // employee_H_INCLUDED

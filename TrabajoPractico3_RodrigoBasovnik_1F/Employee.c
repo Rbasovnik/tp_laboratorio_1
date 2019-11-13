@@ -125,3 +125,88 @@ int printMenu(){
     scanf("%d", &option);
     return option;
 }
+
+void employee_printEmployee(Employee* this){
+    if (this != NULL){
+        printf("\n%5d %20s %20d %20d", this->id, this->nombre, this->horasTrabajadas, this->sueldo);
+    } else{
+        printf("\nPointer incorrecto");
+    }
+}
+
+void employee_printEmployees(LinkedList* lList){
+    int i;
+        if(lList != NULL){
+            printf("\n%5s %20s %20s %20s", "Id", "Nombre", "Horas", "Sueldo");
+            for(i = 0; i < ll_len(lList); i++){
+                employee_printEmployee((Employee*) ll_get(lList,i));
+            }
+        }
+}
+
+
+int employee_sortById( void* employee, void* otherEmployee){
+    int result = 0;
+    Employee* ptr1;
+    Employee* ptr2;
+
+    if(employee != NULL && otherEmployee != NULL ){
+        ptr1 = (Employee*) employee;
+        ptr2 = (Employee*) otherEmployee;
+
+        if(ptr1->id > ptr2->id){
+            result = 1;
+        } else if(ptr1->id < ptr2->id){
+            result = -1;
+        } else {
+            result = 0;
+        }
+    }
+    return result;
+}
+
+
+int employee_sortBySalary( void* employee, void* otherEmployee){
+    int result = 0;
+    Employee* ptr1;
+    Employee* ptr2;
+
+    if(employee != NULL && otherEmployee != NULL ){
+        ptr1 = (Employee*) employee;
+        ptr2 = (Employee*) otherEmployee;
+
+        if(ptr1->sueldo > ptr2->sueldo){
+            result = 1;
+        } else if(ptr1->sueldo < ptr2->sueldo){
+            result = -1;
+        } else {
+            result = 0;
+        }
+    }
+    return result;
+}
+
+int employee_addValidId(int maxRange, int minRange){
+    int input;
+        printf("\nIngrese ID (Entre %d y %d)", minRange, maxRange);
+        scanf("%d", &input);
+        while(input < minRange || input > maxRange){
+            printf("\nId Incorrecto. Ingrese ID (Entre %d y %d)", minRange, maxRange);
+        }
+    return input;
+}
+
+void employee_addValidName(char name[], int len){
+    char aux[len];
+
+}
+
+int employee_addValidInt(char message[], int minRange){
+    int input;
+        printf("\n%s", Message);
+        scanf("%d", &input);
+        while(input < minRange){
+            printf("\nIngreso incorrecto. Debe ser mayor a 0";
+        }
+    return input;
+}
