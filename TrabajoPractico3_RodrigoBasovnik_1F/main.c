@@ -33,38 +33,47 @@ int main()
             case 1:
                 printf("Opcion cargar los datos de los empleados desde el archivo data.csv (modo texto)\n");
                 controller_loadFromText("data.csv",listaEmpleados);
+                system("pause");
                 break;
             case 2:
                 printf("Opcion cargar los datos de los empleados desde el archivo data.csv (modo Binario)\n");
-                //controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee);
+                controller_loadFromBinary("data.csv" , listaEmpleados);
+                system("pause");
                 break;
             case 3:
                 printf("Opcion Alta Empleado.\n");
-                //controller_addEmployee(LinkedList* pArrayListEmployee);
+                controller_addEmployee(listaEmpleados);
+                system("pause");
                 break;
             case 4:
                 printf("Opcion Modificar Empleado.\n");
                 //controller_editEmployee(LinkedList* pArrayListEmployee);
+                system("pause");
                 break;
             case 5:
                 printf("Opcion Baja Empleado.\n");
                 //controller_removeEmployee(LinkedList* pArrayListEmployee);
+                system("pause");
                 break;
             case 6:
                 printf("Opcion Listar Empleados.\n");
                 //controller_ListEmployee(LinkedList* pArrayListEmployee);
+                system("pause");
                 break;
             case 7:
                 printf("Opcion Ordenar Empleados.\n");
                 //controller_sortEmployee(LinkedList* pArrayListEmployee);
+                system("pause");
                 break;
             case 8:
                 printf("Opcion Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
                 //controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
+                system("pause");
                 break;
             case 9:
                 printf("Opcion Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
                 //controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
+                system("pause");
                 break;
             case 10:
                 printf("Opcion Salir.\n");

@@ -186,27 +186,35 @@ int employee_sortBySalary( void* employee, void* otherEmployee){
     return result;
 }
 
-int employee_addValidId(int maxRange, int minRange){
+int employee_addValidId(){
     int input;
-        printf("\nIngrese ID (Entre %d y %d)", minRange, maxRange);
+        printf("\nIngrese ID");
         scanf("%d", &input);
-        while(input < minRange || input > maxRange){
-            printf("\nId Incorrecto. Ingrese ID (Entre %d y %d)", minRange, maxRange);
+        while(input == 0){
+            printf("\nId Incorrecto. Ingrese un ID distinto de 0");
         }
     return input;
 }
 
 void employee_addValidName(char name[], int len){
     char aux[len];
-
+        printf("\nIngrese nombre\n");
+        fflush(stdin);
+        fgets(aux, len, stdin);
+        while (aux == '\0'){
+            ("\nError. Ingrese un nombre valido. ");
+            fflush(stdin);
+            fgets(aux, len, stdin);
+        }
+        strcpy(name, aux);
 }
 
 int employee_addValidInt(char message[], int minRange){
     int input;
-        printf("\n%s", Message);
+        printf("\n%s", message);
         scanf("%d", &input);
         while(input < minRange){
-            printf("\nIngreso incorrecto. Debe ser mayor a 0";
+            printf("\nIngreso incorrecto. Debe ser mayor a 0");
         }
     return input;
 }

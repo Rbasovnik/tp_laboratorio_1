@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <conio.h>
+#include "parser.h"
 #include "LinkedList.h"
 #include "Employee.h"
 
@@ -31,9 +32,9 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
     }
 
     if(response == 1){
-        margen(); printf("Datos cargados con exito");
+        printf("\nDatos cargados correctamente. ");
     } else {
-        margen(); printf("Ups!, ocurrio un error al cargar los datos");
+        printf("\nNo se han cargado los datos correctamente. ");
     }
     return response;
 }
@@ -62,9 +63,9 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
     }
 
     if(response == 1){
-        margen(); printf("Datos cargados con exito");
+        printf("\nDatos cargados correctamente.");
     } else {
-        margen(); printf("Ups!, ocurrio un error al savar los datos");
+        printf("\No se han cargado los datos correctamente.");
     }
     return response;
 }
@@ -78,7 +79,35 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int auxId, auxSalary, auxHorasTrabajadas, success = 0;
+    char auxName[30];
+    Employee* newEmp;
+
+    printf("\nOpcion Alta.\n");
+    if(pArrayListEmployee != NULL){
+        auxId = employee_addValidId();
+        employee_addValidName(auxName, 30);
+        auxHorasTrabajadas = employee_addValidInt("\nIngrese Horas Trabajadas\n", 0);
+        auxSalary = employee_addValidInt("\nIngrese sueldo\n", 0);
+
+        newEmp = employee_new();
+            if(newEmp != NULL){
+                if(employee_setId(newEmp, auxId) == 1 &&
+                   employee_setNombre(newEmp, auxName) == 1 &&
+                   employee_setHorasTrabajadas(newEmp, auxHorasTrabajadas) == 1 &&
+                   employee_setSueldo(newEmp, auxSalary) == 1){
+                    ll_add(pArrayListEmployee, newEmp);
+                    success = 1;
+                    printf("\nEl empleado ha sido dado de alta con exito");
+                   }
+            }
+    }
+
+    if(success == 0){
+        printf("\nNo se ha dado de alta correctamente\n");
+    }
+
+    return success;
 }
 
 /** \brief Modificar datos de empleado

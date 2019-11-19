@@ -31,8 +31,8 @@ void employee_printEmployees(LinkedList* lList);
 int employee_sortById( void* employee, void* auxEmployee);
 int employee_sortBySalary( void* employee, void* auxEmployee);
 
-int employee_addValidId(int id, int maxRange, int minRange);
-void employee_addValidName(char name, int len);
-int employee_addValidInt(int input, int minRange);
+int employee_addValidId();
+void employee_addValidName(char name[], int len);
+int employee_addValidInt(char message[], int minRange);
 
 #endif // employee_H_INCLUDED
