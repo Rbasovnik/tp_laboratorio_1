@@ -144,6 +144,22 @@ void employee_printEmployees(LinkedList* lList){
         }
 }
 
+int employee_sortMenu(){
+    int option;
+    system("cls");
+    printf("\n**Menu de ordenamiento**");
+    printf("\n1.-Ordenar por ID");
+    printf("\n2.-Ordenar por Salario");
+    printf("\n3.-Volver al menu principal");
+    printf("\n************************");
+    printf("\nIngrese opcion: ");
+    scanf("%d", &option);
+        while(option < 1 && option > 3){
+            printf("\nOpcion incorrecta. Reingrese la opcion deseada: ");
+            scanf("%d", &option);
+        }
+    return option;
+}
 
 int employee_sortById( void* employee, void* otherEmployee){
     int result = 0;

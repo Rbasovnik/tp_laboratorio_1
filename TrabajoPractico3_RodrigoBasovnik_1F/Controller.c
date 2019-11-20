@@ -222,7 +222,53 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int orden, sortType = 1, succeed = 0;
+        do{
+            switch(employee_sortMenu()){
+            case 1:
+                printf("\nOpcion ordenar por ID");
+                printf("\nIngrese el orden: Ascendente (1) / Descendente (0) ");
+                scanf("%d", &orden);
+                    while(orden != 0 && orden !=  1){
+                        printf("\nOrden incorrecto. Reingrese orden");
+                    }
+                    if(orden == 0){
+                        ll_sort(pArrayListEmployee, employee_sortById,orden);
+                        printf("\nOrdenamiento exitoso");
+                        succeed = 1;
+                    }
+                    else if(orden == 1){
+                        ll_sort(pArrayListEmployee, employee_sortById,orden);
+                        printf("\nOrdenamiento exitoso");
+                        succeed = 1;
+                    }
+                break;
+            case 2:
+                printf("\nOpcion ordenar por Salario");
+                printf("\nIngrese el orden: Ascendente (1) / Descendente (0) ");
+                scanf("%d", &orden);
+                    while(orden != 0 && orden !=  1){
+                        printf("\nOrden incorrecto. Reingrese orden");
+                    }
+                    if(orden == 0){
+                        ll_sort(pArrayListEmployee, employee_sortBySalary,orden);
+                        printf("\nOrdenamiento exitoso");
+                        succeed = 1;
+                    }
+                    else if(orden == 1){
+                        ll_sort(pArrayListEmployee, employee_sortBySalary,orden);
+                        printf("\nOrdenamiento exitoso");
+                        succeed = 1;
+                    }
+                break;
+            case 3:
+                printf("\nOpcion regresar al menu principal");
+                sortType = 0;
+                break;
+            }
+        }while(sortType == 1);
+
+    return succeed;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).

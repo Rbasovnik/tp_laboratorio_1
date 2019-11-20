@@ -50,6 +50,7 @@ int main()
                 } else {
                     printf("\nNo se han cargado los datos correctamente.\n");
                 }
+                flagCarga = 3;
                 system("pause");
                 break;
             case 4:
@@ -93,7 +94,16 @@ int main()
                 break;
             case 7:
                 printf("Opcion Ordenar Empleados.\n");
-                controller_sortEmployee(listaEmpleados);
+                if(flagCarga != 0){
+                    success = controller_sortEmployee(listaEmpleados);
+                        if(success == 1){
+                            printf("\nOrdenamiento Completo\n");
+                        }else {
+                            printf("\nOrdenamiento Cancelado\n");
+                        }
+                } else{
+                    printf("\nError al ordenar. No se han cargado datos");
+                }
                 system("pause");
                 break;
             case 8:

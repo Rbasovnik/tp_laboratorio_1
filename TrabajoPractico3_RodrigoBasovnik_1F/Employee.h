@@ -28,6 +28,7 @@ int employee_printMenu();
 void employee_printEmployee(Employee* this);
 void employee_printEmployees(LinkedList* lList);
 
+int employee_sortMenu();
 int employee_sortById( void* employee, void* auxEmployee);
 int employee_sortBySalary( void* employee, void* auxEmployee);
 
