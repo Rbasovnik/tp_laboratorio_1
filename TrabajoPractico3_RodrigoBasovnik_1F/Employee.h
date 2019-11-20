@@ -32,6 +32,7 @@ int employee_sortById( void* employee, void* auxEmployee);
 int employee_sortBySalary( void* employee, void* auxEmployee);
 
 int employee_addValidId();
+void employee_customfgets (char cad[], int in);
 void employee_addValidName(char name[], int len);
 int employee_addValidInt(char message[], int minRange);
 

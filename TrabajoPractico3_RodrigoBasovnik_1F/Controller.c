@@ -62,11 +62,6 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
         }
     }
 
-    if(response == 1){
-        printf("\nDatos cargados correctamente.");
-    } else {
-        printf("\No se han cargado los datos correctamente.");
-    }
     return response;
 }
 
@@ -119,7 +114,45 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int i, id, auxHoras, auxSueldo, resultado = -1, index, len;
+    char auxName[30];
+    char option;
+    Employee* auxEmp = employee_new();
+
+    id = employee_addValidId();
+        if(auxEmp != NULL){
+            if(ll_len(pArrayListEmployee) != 0){
+                len = ll_len(pArrayListEmployee);
+                    for(i = 0; i < len; i++){
+                        auxEmp = ((Employee*) ll_get(pArrayListEmployee, i));
+                            if(auxEmp->id == id){
+                                printf("\nEmpleado encontrado!");
+                                employee_printEmployee(auxEmp);
+                                index = i;
+                                printf("\nDesea modificar el ingreso? (S/N)\n");
+                                option = getche();
+                                while(tolower(option) != 's' && tolower(option) != 'n'){
+                                    printf("\nOpcion Incorrecta ingrese 'S' o 'N'\n");
+                                    option = getche();
+                                }
+                                    if(option == 's'){
+                                            employee_addValidName(auxName, 30);
+                                            auxHoras = employee_addValidInt("Ingrese horas trabajadas modificadas\n", 0);
+                                            auxSueldo = employee_addValidInt("Ingrese salario modificado\n", 0);
+
+                                            strcpy(auxEmp->nombre, auxName);
+                                            auxEmp->horasTrabajadas = auxHoras;
+                                            auxEmp->sueldo = auxSueldo;
+                                            ll_remove(pArrayListEmployee, index);
+                                            ll_push(pArrayListEmployee, index, auxEmp);
+                                            resultado = 1;
+                                    }
+                                break;
+                            }
+                    }
+            }
+        }
+    return resultado;
 }
 
 /** \brief Baja de empleado
@@ -131,7 +164,34 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int i, id, index, success = -1;
+    char option;
+    Employee* auxEmployee = employee_new();
+        if(auxEmployee != NULL){
+            id = employee_addValidId();
+                for(i = 0; i < ll_len(pArrayListEmployee); i++){
+                    auxEmployee = ((Employee*) ll_get(pArrayListEmployee, i));
+                    if (auxEmployee->id == id){
+                        printf("\nEmpleado encontrado");
+                        employee_printEmployee(auxEmployee);
+                        printf("\nDesea eliminar el ingreso? (S/N)");
+                        option = getche();
+                            while(tolower(option) != 's' && tolower(option) != 'n'){
+                                printf("\nOpcion incorrecta ingrese 'S' o 'N'\n");
+                                option = getche();
+                            }
+                            if(tolower(option) == 's'){
+                                index = i;
+                                ll_remove(pArrayListEmployee, index);
+                                success = 1;
+                                break;
+                            } else{
+                                break;
+                            }
+                    }
+                }
+        }
+    return success;
 }
 
 /** \brief Listar empleados
@@ -143,7 +203,14 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int response = -1;
+
+    if (pArrayListEmployee != NULL){
+        employee_printEmployees(pArrayListEmployee);
+        response = 1;
+    }
+
+    return response;
 }
 
 /** \brief Ordenar empleados

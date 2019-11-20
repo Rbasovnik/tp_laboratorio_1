@@ -168,3 +168,51 @@
 1573761560 d:\data\videos\nueva carpeta\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\parser.h
 	"LinkedList.h"
 
+1574205513 source:d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1573763287 d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\linkedlist.h
+
+1574204732 d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\employee.h
+
+1573763288 source:d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1574206379 source:d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"parser.h"
+	"LinkedList.h"
+	"Employee.h"
+
+1573763288 d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\parser.h
+	"LinkedList.h"
+
+1574204480 source:d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1573763287 d:\tp_laboratorio_1-master\trabajopractico3_rodrigobasovnik_1f\controller.h
+	"Employee.h"
+

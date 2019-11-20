@@ -106,7 +106,7 @@ int employee_getSueldo(Employee* this,int* sueldo){
     return resul;
 }
 
-int printMenu(){
+int employee_printMenu(){
     int option;
     system("cls");
     printf("********Menu de opciones********\n");
@@ -196,15 +196,30 @@ int employee_addValidId(){
     return input;
 }
 
+void employee_customfgets (char cad[], int in){
+    int i;
+    fflush(stdin);
+    fgets(cad, in-2, stdin);
+
+    cad[in-2] = '\0';
+    for (i = 0; i < in; i++){
+        if (cad[i] == '\n'){
+                cad[i] = '\0';
+                break;
+        }
+    }
+
+}
+
 void employee_addValidName(char name[], int len){
     char aux[len];
         printf("\nIngrese nombre\n");
         fflush(stdin);
-        fgets(aux, len, stdin);
+        employee_customfgets(aux, len);
         while (aux == '\0'){
-            ("\nError. Ingrese un nombre valido. ");
+            printf("\nError. Ingrese un nombre valido. ");
             fflush(stdin);
-            fgets(aux, len, stdin);
+            employee_customfgets(aux, len);
         }
         strcpy(name, aux);
 }
