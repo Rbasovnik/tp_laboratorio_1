@@ -108,12 +108,22 @@ int main()
                 break;
             case 8:
                 printf("Opcion Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-                //controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
+                success = controller_saveAsText("datatest.csv", listaEmpleados);
+                    if(success == 1){
+                        printf("\nDatos guardados (modo texto) exitosamente!\n");
+                    } else{
+                        printf("\nNo se han guardado los datos correctamente\n");
+                    }
                 system("pause");
                 break;
             case 9:
                 printf("Opcion Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
-                //controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
+                success = controller_saveAsBinary("datatest.csv" , listaEmpleados);
+                    if(success == 1){
+                        printf("\nDatos guardados (modo binario) exitosamente!\n");
+                    } else{
+                        printf("\nNo se han guardado los datos correctamente\n");
+                    }
                 system("pause");
                 break;
             case 10:

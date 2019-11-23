@@ -280,7 +280,36 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* file;
+    Employee* emp;
+    int length = -1;
+    int id,hours,i;
+    int salary;
+    char name[50];
+
+    int response = 0;
+
+    if(path != NULL && pArrayListEmployee != NULL){
+        length = ll_len(pArrayListEmployee);
+        if(length > 0){
+            file = fopen(path,"w");
+            if(file!=NULL){
+                for(i=0;i<length;i++){
+                    emp=(Employee*)ll_get(pArrayListEmployee,i);
+                    employee_getId(emp,&id);
+                    employee_getNombre(emp,name);
+                    employee_getHorasTrabajadas(emp,&hours);
+                    employee_getSueldo(emp,&salary);
+                    fprintf(file,"%d,%s,%d,%8d \n",id,name,hours,salary);
+                }
+                fclose(file);
+                if(i == length){
+                    response = 1;
+                }
+            }
+        }
+    }
+    return response;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
@@ -292,6 +321,29 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* file;
+    Employee* emp;
+    int length,i;
+    int response = 0;
+
+    if(path != NULL && pArrayListEmployee != NULL){
+        length = ll_len(pArrayListEmployee);
+        if(length > 0){
+            file = fopen(path,"wb");
+            if(file!=NULL){
+                for(i=0;i<length;i++){
+                    emp = ll_get(pArrayListEmployee,i);
+                    if(emp != NULL){
+                        fwrite(emp,sizeof(Employee),1,file);
+                    }
+                }
+                fclose(file);
+                if(i == length){
+                    response = 1;
+                }
+            }
+        }
+    }
+    return response;
 }
 
